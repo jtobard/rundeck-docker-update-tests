@@ -14,10 +14,9 @@ ADD http://dl.bintray.com/rundeck/rundeck-deb/rundeck-2.7.1-1-GA.deb /tmp/rundec
 COPY . /app
 WORKDIR /app
 RUN useradd -d /var/lib/rundeck -s /bin/false rundeck
-RUN chmod u+x ./run.sh
-#RUN chmod u+x ./upgrade.sh
+RUN chmod u+x ./install.sh
+
 
 EXPOSE 4440
 
-CMD ./run.sh
-#CMD ./test.sh
+CMD ./install.sh
