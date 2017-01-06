@@ -1,0 +1,27 @@
+mysql:
+    image: mysql:5.7
+    environment:
+        MYSQL_DATABASE: rundeck
+        MYSQL_USER: rundeck
+        MYSQL_PASSWORD: rundeck
+        MYSQL_RANDOM_ROOT_PASSWORD : 'true'
+    volumes:
+        - ./volume/mysql:/var/lib/mysql
+rundeck:
+    build: .
+    environment:
+        MYSQL_DATABASE: rundeck
+        MYSQL_USER: rundeck
+        MYSQL_PASSWORD: rundeck
+        HOST_RUNDECK: localhost
+        SERVER_URL: http://localhost:4440
+        PASSWORD: admin
+    ports:
+        - "4440:4440"
+    links:
+        - mysql
+    volumes:
+        - ./volume/etc:/etc/rundeck
+        - ./volume/rundeck:/var/rundeck
+        - ./volume/lib:/var/lib/rundeck
+        - ./volume/log:/var/log/rundeck
