@@ -5,6 +5,8 @@ mysql:
         MYSQL_USER: rundeck
         MYSQL_PASSWORD: rundeck
         MYSQL_RANDOM_ROOT_PASSWORD : 'true'
+    ports:
+        - "3306:3306"
     volumes:
         - ./volume/mysql:/var/lib/mysql
 rundeck:
@@ -15,7 +17,6 @@ rundeck:
         MYSQL_PASSWORD: rundeck
         HOST_RUNDECK: localhost
         SERVER_URL: http://localhost:4440
-        PASSWORD: admin
     ports:
         - "4440:4440"
     links:

@@ -18,6 +18,7 @@ RUN chmod u+x ./install.sh
 
 
 EXPOSE 4440
+EXPOSE 3306
 
 CMD ./install.sh
 
